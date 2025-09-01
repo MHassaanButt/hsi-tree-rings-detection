@@ -1,0 +1,5 @@
+center=(139, 230)
+boundary_pixels=4201
+true_label=1
+rings_detected=2
+mean_width_px=28.00

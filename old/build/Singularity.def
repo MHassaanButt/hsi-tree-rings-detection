@@ -1,0 +1,54 @@
+Bootstrap: docker
+From: pytorch/pytorch:2.1.1-cuda12.1-cudnn8-runtime
+
+%labels
+    Author Hassaan
+    Purpose TF 2.15.1 + Torch 2.1.1 (GPU) + Jupyter
+
+%files
+    requirements.txt /tmp/requirements.txt
+
+%post
+    set -ex
+    export PATH="/opt/conda/bin:$PATH"
+    # keep pip stack current
+    pip install --upgrade pip setuptools wheel
+    # TensorFlow 2.15.1 with bundled CUDA/cuDNN
+    pip install 'tensorflow[and-cuda]==2.15.1'
+    # Ensure exact PyTorch 2.1.1 CUDA 12.1 wheels
+    pip install --force-reinstall --no-cache-dir \
+        torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 \
+        --extra-index-url https://download.pytorch.org/whl/cu121
+    # Jupyter + your deps
+    pip install notebook ipykernel
+    if [ -f /tmp/requirements.txt ]; then
+        pip install --no-cache-dir -r /tmp/requirements.txt
+    fi
+    # quick sanity (won’t fail build if import prints warnings)
+    python - <<'PY'
+import torch, tensorflow as tf
+print("Torch:", torch.__version__, "CUDA:", torch.cuda.is_available())
+print("TF:", tf.__version__, "GPUs:", tf.config.list_physical_devices('GPU'))
+PY
+
+%environment
+    export PATH="/opt/conda/bin:$PATH"
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
+    # runtime knobs (you can override at sbatch/exec)
+    export SING_NOTEBOOK_DIR=${SING_NOTEBOOK_DIR:-/workspace}
+    export SING_JUPYTER_PORT=${SING_JUPYTER_PORT:-8888}
+    export SING_JUPYTER_IP=${SING_JUPYTER_IP:-0.0.0.0}
+
+%runscript
+    mkdir -p "${SING_NOTEBOOK_DIR}" && cd "${SING_NOTEBOOK_DIR}"
+    echo "PyTorch:" ; python -c "import torch; print(torch.__version__, 'CUDA:', torch.cuda.is_available())" || true
+    echo "TensorFlow:" ; python -c "import tensorflow as tf; print(tf.__version__, 'GPUs:', tf.config.list_physical_devices('GPU'))" || true
+    exec jupyter notebook --ip=${SING_JUPYTER_IP} --port=${SING_JUPYTER_PORT} \
+         --notebook-dir="${SING_NOTEBOOK_DIR}" --no-browser --allow-root
+
+%startscript
+    # identical to runscript
+    mkdir -p "${SING_NOTEBOOK_DIR}" && cd "${SING_NOTEBOOK_DIR}"
+    exec jupyter notebook --ip=${SING_JUPYTER_IP} --port=${SING_JUPYTER_PORT} \
+         --notebook-dir="${SING_NOTEBOOK_DIR}" --no-browser --allow-root

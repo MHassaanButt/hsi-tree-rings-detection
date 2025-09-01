@@ -1,0 +1,5 @@
+center=(-24, 234)
+boundary_pixels=5960
+true_label=0
+rings_detected=7
+mean_width_px=29.67

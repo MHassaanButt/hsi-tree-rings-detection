@@ -1,0 +1,65 @@
+================================================================================
+White_swir_.1-4.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+abachi_swir_.1-23.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+afromasia_swir_.1-21.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+dark-end_swir_.1-27.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+ipe_swir_.1-17.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+iroko_swir_.1-19.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+khayamahonki_swir_.1-20.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+merbau_swir_.1-14.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+ovangol_swir_.1-15.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+padauk_swir_.1-11.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+sapelimahonki_swir_.1-18.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+tiiki_swir_.1-16.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24
+================================================================================
+wenge-real_swir_.1-9.hdr
+  bands=256  interleave=bil  dtype=12
+  Wavelength = {
+  -> wavelengths block found: count=256, first=933.49, last=2538.24

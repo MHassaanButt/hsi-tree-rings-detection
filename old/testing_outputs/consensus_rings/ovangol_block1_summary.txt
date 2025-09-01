@@ -1,0 +1,4 @@
+center=(-23, 242)
+boundary_pixels=3142
+true_label=0
+rings_detected=0
